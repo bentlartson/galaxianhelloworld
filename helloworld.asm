@@ -165,7 +165,7 @@ UpdateSpriteRotation
         LD B, A
         LD A, 1
         LD C, A
-        LD A, 41
+        LD A, (SpriteGlyph)
         LD D, A
 
         ; Rotate the sprite left
