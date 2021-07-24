@@ -13,7 +13,7 @@ Since it's written in Z80 assembly, to build this, you will need a Z80 cross-ass
 
 ## Running
 
-Note that this project will only assemble an executable ROM - it does not contain any source code to assemble any tile ROMs, and in fact assumes the use of the default Galaxian tile ROMs.  To run it, simply assemble the program, and copy the 2K output binary over the first ROM image you would find in a standard Galaxian 5 ROM set. In the case of the MAME 'galaxian' ROMSET, this would be the file 'galmidw.u'.
+Note that this project will only assemble an executable ROM - it does not contain any source code to assemble any tile ROMs, and in fact assumes the use of the default Galaxian tile ROMs.  To run it, simply assemble the program, and copy the 2K output binary over the first program ROM image you would find in a standard Galaxian 5 ROM set. In the case of the MAME 'galaxian' ROM set, this would be the file 'galmidw.u'.
 
 ## Other
 
