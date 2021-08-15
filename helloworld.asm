@@ -161,7 +161,7 @@ UpdateSpriteRotation
         JP Z, NoJoystickRight
 
         ; Load sprite index into B, rotation direction into C, and base glyph into D
-        LD A, 0
+        XOR A
         LD B, A
         LD A, 1
         LD C, A
@@ -178,11 +178,11 @@ NoJoystickRight
         BIT 2, A 
         JP Z, NoJoystickLeft
 
-        ; Load sprite index into B and rotation direction into C
-        LD A, 0
+        ; Load sprite index into B, rotation direction into C, and base glyph into D
+        XOR A
         LD B, A
         LD C, A
-        LD A, 41
+        LD A, (SpriteGlyph)
         LD D, A
 
         ; Rotate the sprite right
