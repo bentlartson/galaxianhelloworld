@@ -1,6 +1,8 @@
 # galaxianhelloworld
 Hello World Program for Galaxian arcade hardware
 
+![Hello World](http://www.blarworld.net/helloworld-galaxian.png)
+
 ## Overview
 
 Galaxian was an arcade game by Namco released in 1979.  It proved to be immensely successful in the arcades upon it's release.  It's hardware was later used as the basis for many other arcade games released in the late 70s and early 80s.  (Scroll to the bottom of the Galaxian MAME driver file here to see a mostly complete list: https://github.com/mamedev/mame/blob/master/src/mame/drivers/galaxian.cpp)
@@ -13,7 +15,7 @@ Since it's written in Z80 assembly, to build this, you will need a Z80 cross-ass
 
 ## Running
 
-Note that this project will only assemble an executable ROM - it does not contain any source code to assemble any tile ROMs, and in fact assumes the use of the default Galaxian tile ROMs.  To run it, simply assemble the program, and copy the 2K output binary over the first program ROM image you would find in a standard Galaxian 5 ROM set. In the case of the MAME 'galaxian' ROM set, this would be the file 'galmidw.u'.
+Note that this project will only assemble an executable ROM - it does not contain any source code to assemble any tile ROMs, and in fact assumes the use of the default Galaxian tile ROMs.  To run it, simply assemble the program, and copy the 2K output binary over the first program ROM image you would find in a standard Galaxian 5 ROM set. In the case of the MAME 'galaxian' ROM set, this would be the file 'galmidw.u'.  (Note that if running this in MAME, you will need to run it from the command line in order to bypass the usual checksum check that MAME does)
 
 ## Other
 
