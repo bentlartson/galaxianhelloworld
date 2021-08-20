@@ -292,8 +292,8 @@ PlaceBullet
 
          ; Calculate the memory offset
         LD A, B
-        RLA
-        RLA                                ; Multiply the bullet index by 4 since each bullet is 4 bytes
+        SLA A
+        SLA A                              ; Multiply the bullet index by 4 since each bullet is 4 bytes
         LD D, 0
         LD E, A                            ; Transfer the result from A to DE
         LD HL, BulletRAM+1
@@ -330,8 +330,8 @@ PlaceSprite
 
          ; Calculate the memory offset
         LD A, B
-        RLA
-        RLA                                ; Multiply the sprite index by 4 since each sprite is 4 bytes
+        SLA A
+        SLA A                              ; Multiply the sprite index by 4 since each sprite is 4 bytes
         LD D, 0
         LD E, A                            ; Transfer the result from A to DE
         LD HL, SpriteRAM
@@ -382,8 +382,8 @@ RotateSprite
 
         ; Calculate the memory offset
         LD A, B
-        RLA
-        RLA                                ; Multiply the sprite index by 4 since each sprite is 4 bytes
+        SLA A
+        SLA A                              ; Multiply the sprite index by 4 since each sprite is 4 bytes
         INC A                              ; ...and add 1 since the sprite glyph is the second of the 4 bytes
         LD D, 0
         LD E, A                            ; Transfer the result from A to DE
