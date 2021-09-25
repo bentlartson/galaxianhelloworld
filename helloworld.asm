@@ -111,7 +111,7 @@ ClearScreenAttrRAMLoopTop
 
         ; Clear all sprites
         LD HL, SpriteRAM
-        LD, B, 32
+        LD B, 32
         XOR A
 ClearSpriteRAMLoopTop
         LD (HL), A
@@ -120,7 +120,7 @@ ClearSpriteRAMLoopTop
 
         ; Clear all bullets
         LD HL, BulletRAM
-        LD, B, 32
+        LD B, 32
 ClearBulletRAMLoopTop
         LD (HL), A
         INC HL
