@@ -520,7 +520,7 @@ RotateEndIf
 ;
 ; * B = Index of the tile to place (0-255)
 ; * C = X position of the tile, where 0 is the left side of the screen and 27 is the right
-; * D = Y position of the tile, where 0 is the top of the screen and 31 is the bottom
+; * D = Y position of the tile, where 0 is the top of the screen and 31 is the bottom (preserved during call)
 ;
 ; Additional registers/memory used:
 ;
@@ -531,10 +531,42 @@ RotateEndIf
 ; * Temp = Temp storage
 
 PlaceTile
- 
+
        ; Save D in Temp since we need to overwite D later
         LD A, D
         LD (Temp), A
+
+        ; Calculate the tile's offset in video memory
+        CALL CalculateTileOffset
+
+        ; Load the actual tile
+        LD DE, VideoRAM                    ; Load the video RAM base address into DE
+        ADD HL, DE                         ; Now add the tile offset we calculated and store the result in HL
+        LD (HL), B                         ; Store the tile value at the mem location given by HL
+
+        ; Restore D
+        LD A, (Temp)
+        LD D, A
+
+        RET
+
+; ************************************
+; * CALCULATE TILE OFFSET SUBROUTINE *
+; ************************************
+;
+; Input parameters:
+;
+; * C = X position of the tile, where 0 is the left side of the screen and 27 is the right
+; * D = Y position of the tile, where 0 is the top of the screen and 31 is the bottom
+;
+; Additional registers/memory used:
+;
+; * HL   = stores return value
+; * A    = Temp storage
+; * E    = Temp storage
+; * Temp = Temp storage
+
+CalculateTileOffset
 
         ; The proper memory offset = (27 - X) * 32 + Y + 64
         LD A, 27                           ; Load 27 into A
@@ -552,15 +584,6 @@ XTimes32Top
         LD D, 0
         LD E, A                            ; Transfer the result from A to DE
         ADD HL, DE                         ; Now add it all together and put the result in HL
-
-        ; Load the actual tile
-        LD DE, VideoRAM                    ; Load the video RAM base address into DE
-        ADD HL, DE                         ; Now add the tile offset we calculated and store the result in HL
-        LD (HL), B                         ; Store the tile value at the mem location given by HL
-
-        ; Restore D
-        LD A, (Temp)
-        LD D, A
 
         RET
 
